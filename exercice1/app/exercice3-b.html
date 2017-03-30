@@ -1,0 +1,35 @@
+<!-- template lié au ng-controller "myCtrl -->
+<div ng-controller="myCtrl">
+    <form name="myForm" ng-submit="valid()"> <!-- ng-submit, directive spécifique à la form -->
+         <h1>Formulaire</h1>
+         <!-- ng-model permet de présenter à la vue le $scope.name -->
+         <!-- sur l'input, la directive ng-pattern annalyse le pattern de mon test.Text -->
+         <!-- required oblige l'input a être rempli -->
+         <label for="name">Nom : </label><input type="text" name="name" value="Votre nom" required ng-pattern="testText.pattern" ng-model="name"/> 
+         <!-- ng-show apparait à la vue seulement s'il est vérifié. Ici, on analyse si le pattern de l'input "name" du formulaire 'myForm" est une erreur -->
+         <span ng-show="myForm.name.$error.pattern">Erreur !</span>  
+         <!-- Ici, on analyse si le champs (required) de l'input "name" du formulaire 'myForm" est rempli (sinon c'est une erreur et le message apparait) -->
+         <span ng-show="myForm.name.$error.required">Vous devez remplir ce champ</span> 
+         <br>
+         <label for="mail">Mail : </label><input type="text" name="mail" value="Votre email" required ng-pattern="testMail.pattern" ng-model="mail"/>
+         <span ng-show="myForm.mail.$error.pattern">Erreur !</span>
+         <span ng-show="myForm.mail.$error.required">Vous devez remplir ce champ</span> 
+         <br>
+         <label for="subject">Sujet : </label><input type="text" name="subject" value="Le sujet de votre message" required ng-model="subject"/>
+         <span ng-show="myForm.subject.$error.required">Vous devez remplir ce champ</span> 
+         <br>
+         <label for="text">Texte : </label><textarea value="entrez votre texte" name="text" rows="8" cols="80" required ng-model="text"></textarea>
+         <span ng-show="myForm.text.$error.required">Vous devez remplir ce champ</span> 
+         <br>
+         <button type="submit" value="Submit">valider</button>
+         <br> 
+    </form>
+    <br>
+    </div>
+    <div>
+        <!-- Lorsque le bouton "submit" soumet le tableau list (avec les objets qui nous intéressent), list est récupéré par la balise information
+        qui place alors les objets dans son template. Information se répète autant de fois que l'on applique une liste, avec la valeur des objets retenus -->
+    <information ng-repeat="test in list">
+    </information>
+    </div>
+

@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>exercice1 - bonus - angular</title>
+        <style>
+            #red {
+                height: 70px;
+                width: 70px;
+                background-color: red;
+            }
+            #green {
+                height: 70px;
+                width: 70px;
+                background-color: green;
+            }
+        </style>
+    </head>
+    <body ng-app="myApp">
+        <form name='myForm' ng-controller="myController" >
+            <!-- récupère, grâce à ng-model, la valeur de ce qui est noté dans l'input-->
+            <!-- required spécifie que ce champs est requis avant les intructions-->
+            <!-- ng-pattern cherche dans l'objet (test2) ce qui doit être testé (pattern)-->
+            <label for="password">Password : </label><input type="email" ng-model="email" required ng-pattern="test2.pattern" name="password"/>
+            <!-- la div rouge est montrée (ng-show) seulement si la valeur de l'input password, dans la form, est detectée comme étant une erreur vis à vis du pattern-->
+            <div id="red" ng-show="myForm.password.$error.pattern && myForm.password.$error"></div>
+            <!-- la div verte est montrée (ng-show) seulement si la valeur de l'input password, dans la form, est detectée comme étant valid-->
+            <div id="green" ng-show="myForm.password.$valid"></div>
+        </form>
+        <script src="../bower_components/angular/angular.js" type="text/javascript"></script>
+        <script src="scripts/exercice1.js" type="text/javascript"></script>
+    </body>
+</html>
